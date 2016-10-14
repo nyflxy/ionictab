@@ -5,9 +5,17 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',
+  'starter.tab-account',
+  'starter.account_bindtel',
+  'starter.account_advice',
+  'starter.account_fuwu',
+  'starter.account_gaunyu',
+  'starter.account_recent',
+  'starter.account_syncdata',
+    ])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,$rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -21,6 +29,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       StatusBar.styleDefault();
     }
   });
+
+  // 开机前提前禁掉tab栏位
+    $rootScope.$on('$ionicView.beforeEnter', function(event, view) {
+      $rootScope.isHideTabBar = (
+        // account
+        view.stateName === 'tab.account_advice'
+        ||view.stateName === 'tab.account_bindtel'
+        ||view.stateName === 'tab.account_fuwu'
+        ||view.stateName === 'tab.account_guanyu'
+        ||view.stateName === 'tab.account_recent'
+      );
+      console.log('Before Enter..', view.stateName);
+    });
+
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -40,31 +62,31 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
+  .state('tab.main', {
+    url: '/main',
     views: {
       'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+        templateUrl: 'templates/tab-main.html',
+        controller: 'MainCtrl'
       }
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.articels', {
+      url: '/articels',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+        'tab-articels': {
+          templateUrl: 'templates/tab-articels.html',
+          controller: 'ArticelsCtrl'
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+    .state('tab.articel-detail', {
+      url: '/articels/:articelId',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+        'tab-articels': {
+          templateUrl: 'templates/articel-detail.html',
+          controller: 'ArticelDetailCtrl'
         }
       }
     })
@@ -80,6 +102,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/main');
 
 });
