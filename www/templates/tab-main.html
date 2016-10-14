@@ -1,37 +1,31 @@
 <ion-view view-title="首页">
   <ion-content class="padding">
-    <icon-list>
-      <h3>数据同步</h3>
-      <ion-item>
-      <div>
-        <h3>同步开发者头条分享</h3>
-        <input ng-model="toutiao_account" type="text" style="width: 70vw;height:40px;border: 1px solid;border-color: #cccccc;padding-left: 2px;float: left;" placeholder="请输入开发者头条独家号">
-        <div style="width: 50px;height: 40px;background-color: #3d9feb;float: left;padding-top: 5px;padding-left: 10px;padding-right: 10px;padding-bottom: 5px;">
-          <span style="width: 30px;height: 30px;">提交</span>
+    <ion-slide-box does-continue="true" auto-play="true" slide-interval="3000">
+      <ion-slide  ng-repeat="banner in ['fdsfs','fsdff']" >
+        <div style="width: 100vw;height:100px" > <img ng-src="{{basePath}}{{banner.file_path}}" style="width: 100%;height: 100px " /></div>
+      </ion-slide>
+    </ion-slide-box>
+    <div class="container-fluid">
+        <div class="row" id="search_page">
+
+            <div class="col-xs-7" style="width:100%;color: #777;font-size: 18px;line-height: 20px;text-decoration: none;margin-top:10px;text-align:center;">
+                <span>丁蜀镇义仓物资追踪系统</span>
+            </div>
+
+            <div class="col-xs-7" style="margin-top:20px;width:100%;">
+                <input id="number" type="text" placeholder="请输入志愿者编号" class="form-control"/>
+            </div>
+
         </div>
-      </div>
-      </ion-item>
+    </div>
 
-      <ion-item style="margin-top:10px;">
-        <div>
-        <h3>同步CSDN分享</h3>
-        <input ng-model="toutiao_account" type="text" style="width: 70vw;height:40px;border: 1px solid;border-color: #cccccc;padding-left: 2px;float: left;" placeholder="请输入CSDN帐号">
-        <div style="width: 50px;height: 40px;background-color: #3d9feb;float: left;padding-top: 5px;padding-left: 10px;padding-right: 10px;padding-bottom: 5px;">
-          <span style="width: 30px;height: 30px;">提交</span>
+    <div style="width:100%;" id="nearby_donate_page">
+        <div class="title">
+            <span>最近捐赠</span>
+            <a href="/donator.html" style="float:right;">查询志愿者编号</a>
         </div>
-      </div>
-      </ion-item>
-
-      <ion-item style="margin-top:10px;">
-        <div>
-        <h3>分享</h3>
-        <input ng-model="articel_title" type="text" style="width: 100%;height:40px;border: 1px solid;border-color: #cccccc;padding-left: 2px;float: left;" placeholder="标题">
-        <input ng-model="articel_link" type="text" style="width: 100%;height:40px;border: 1px solid;border-color: #cccccc;padding-left: 2px;float: left;margin-top:5px;" placeholder="链接">
-        <div style="clear:both;"></div>
-        <button class="button button-balanced" style="float: left;margin-top:5px;">提交</button>
-      </div>
-      </ion-item>
-    </icon-list>
-
+        <div class="good-tab-list container-fluid" id="nearby_donate">
+        </div>
+    </div>
   </ion-content>
 </ion-view>
