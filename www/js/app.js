@@ -72,25 +72,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',
     }
   })
 
-  .state('tab.articels', {
-      url: '/articels',
-      views: {
-        'tab-articels': {
-          templateUrl: 'templates/tab-articels.html',
-          controller: 'ArticelsCtrl'
-        }
-      }
-    })
-    .state('tab.articel-detail', {
-      url: '/articels/:articelId',
-      views: {
-        'tab-articels': {
-          templateUrl: 'templates/articel-detail.html',
-          controller: 'ArticelDetailCtrl'
-        }
-      }
-    })
-
   .state('tab.account', {
     url: '/account',
     views: {
